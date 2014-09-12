@@ -37,7 +37,8 @@ Imperative knowledge tells us how to find the square root, consider the below st
 3. Otherwise, create a new guess by averaging `g` and `x/g`, i.e `g(new) = (g(old) + x/g(old))/2`
 4. Using this new guess, go back to Step 2.  
 
-**Example:- **
+**Example:-**
+
 If we have to find square root of 25, which is 5,
 
 Iteration 1:  
