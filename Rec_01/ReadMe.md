@@ -2,7 +2,7 @@
 
 ## Introduction
 
-### What is a computer?
+### [What is a computer?](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=92)
 
 The most basic computer consists of these 4 components.  
 
@@ -11,7 +11,7 @@ The most basic computer consists of these 4 components.
 * Input 
 * Output
 
-### What is a program?
+### [What is a program?](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=115)
 A program is a sequential steps of execution of instruction, which are loaded from memory to be executed.  
 Computer executes instruction in **binary** format i.e. every instruction is a sequence of 0's and 1's, but this is very difficult for humans to read.  
 
@@ -36,7 +36,7 @@ Now if you see these code sequence which is much more readable than previous 2.
 
 So all the programming languages allows us to express our thought in a language we understand than converts it to a language (binary) which a computer can understand and executes.
 
-## Syntax & Semantics
+## [Syntax & Semantics](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=271)
 
 ### Syntax 
 
@@ -48,7 +48,7 @@ variable + variable     //valid syntax in Python
 variable variable +     //not valid in Python, but may be valid in other.
 ````
 
-### Static Semantics
+### [Static Semantics](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=351)
 
 Static Semantics is syntactical valid statement which **means**  something.
 
@@ -66,7 +66,7 @@ a/c     //syntactically valid, but static semantic is off, because how to divide
 
 The **Syntax** and **Static Semantics**, are easier for a compiler or interpreter to check, as these are pretty explicit rules.
 
-### Semantics
+### [Semantics](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=458)
 
 This is the part where the Syntax of the program is correct, the sequence of instructions have some meaning (Static Semantically correct) , but as a whole the programs does not work.
 
@@ -82,7 +82,7 @@ a/c         //correct, both syntactically and static semantically, but does not 
 
 All program are very explicit, without ambiguity.
 
-# Python Introduction.
+# [Python Introduction.](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=588)
 
 Python is a general purpose language, used for  
 
@@ -103,9 +103,9 @@ myVar = 'A String'  //myVar is a variable,
 
 Everything in Python is object.
 
-## Type of Object in Python.
+## [Type of Object in Python.](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=815)
 
-### int's 
+### [int's](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=817)
 `int` means integer, like.  
 ````
 7,8,9,-1,2
@@ -147,7 +147,7 @@ The operation possible on **float's** are as given below.
 | `/`      | Division       |  
 | `**`     | Exponentiation |  
 
-### String's 
+### [String's](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1124)
 String is just a sequence of characters.
 
 ex:- 
@@ -173,11 +173,11 @@ s2 = "World"
 s1+s2   //"Hello World", concatenate.
 ````
 
-### Boolean's
+### [Boolean's](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1305)
 
 It is a type with 2 values, `True` and `False`.
 
-### None Type.
+### [None Type ](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1337)
 
 It holds a place like a place holder, without any value.
 
@@ -186,7 +186,7 @@ The data type to be discussed later.
 ### Tuple
 ### Dictionary 
 
-## Comparison Operator.
+## [Comparison Operator.](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1507)
 
 Comparison operator are applicable to **Boolean** data type, each operator takes two operand and compare them based on the operator mentioned below.
 
@@ -208,7 +208,7 @@ a < b   //True
 a > b   //False
 `````
 
-## Logical Operator
+## [Logical Operator](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1581)
 
 | Operator |   Meaning   | No of Operator |
 | :------: | :---------- | -------------- |
@@ -281,7 +281,7 @@ f = 5
 
 Till now all the operators are able to perform single line operations, so we cannot deviate for the top down flow of program. We can use the Branching statement to change the flow of statements.
 
-### Branching Statements.
+### [Branching Statements.](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=1820)
 #### `if`  `elif` `else` Statement
 
 The basic syntax of these are given below.
@@ -298,7 +298,7 @@ else :
 `elif` and `else` block in the above syntax is not necessary.  
 Python represent block of code by indent, and not using any brackets.
 
-#### Looping Statement.
+#### [Looping Statement ](https://www.youtube.com/watch?v=88fqFjfxgwI&list=PLB2BE3D6CA77BB8F7#t=2029)
 These are the statements which are executed in loops i.e. iterate over multiple times.
 
 There are two variant of the loops.
