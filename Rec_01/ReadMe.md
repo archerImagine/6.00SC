@@ -1,4 +1,4 @@
-# Recitation 1: Review Of Lecture 01 and 02
+# Recitation 1| Review Of Lecture 01 and 02
 
 ## Introduction
 

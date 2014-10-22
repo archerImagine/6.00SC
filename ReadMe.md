@@ -10,4 +10,7 @@ Notes for the lecture given in MIT for beginners in Computer science, will try m
 * [FlipKart Link To book](http://www.flipkart.com/intro-computation-programming-using-python/p/itmdrchjuffgzfhu?pid=9788120348660)
 
 ### Lecture Notes.
-* [Lecture 1](Lec_01/NewReadMe.md)
+1. [Lecture 1](Lec_01/ReadMe.md)
+2. [Lecture 2](Lec_02/ReadMe.md)
+3. [Recitation 1](Rec_01/ReadMe.md)
+4. [Lecture 4](Lec_04/ReadMe.md)
