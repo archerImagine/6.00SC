@@ -227,7 +227,7 @@ print ans, 'is close to square root of', x
 
 TODO: Not able understand the number of search space?
 TODO: What is the positive integer for with the bisection search does not work?
-
+[Square Roots of Numbers between 0 and 1](http://mathforum.org/library/drmath/view/58270.html)
 ## References ##
 ### Links ###
 1. [MIT OCW](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/unit-1/lecture-3-problem-solving/)

@@ -2,7 +2,7 @@
 
 # find the square root of a number using bisection search
 
-x = int(raw_input("Enter a Number to find the square root: "))
+x = float(raw_input("Enter a Number to find the square root: "))
 epsilon = 0.01
 numOfGuesses = 0
 low = 0
