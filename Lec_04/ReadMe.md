@@ -298,11 +298,27 @@ We can also used `find`, which will return the index of the character found.
 2. Problem Set 2 (Assigned)
     1. [Problem Set 2 Due on Lecture 6](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/unit-1/lecture-6-recursion/)
 
+## Check Yourself ##
+### What is decomposition? ###
+Decomposition is the process to break larger problems into more manageable smaller problem.
 
+### What is abstraction? ###
+Abstraction is the process by which we hide the inner details of implementation so that the user is not bothered with the internal details. It is just like a black box, where only the specification are exposed.
 
+### What is the difference between formal and actual parameters? ###
+Formal parameters are the variables which are used inside a function, and actual parameter are the variables with which the function is invoked.
 
+ex:- Consider the below code.
 
+````
+def sum(a,b):
+  return a + b
 
+x = 8
+y = 9
+print "sum of 8 and 9 is = ", sum(x,y)
+````
+In the above code, formal parameters are `a` and `b`, and the actual parameters are `x` and `y`.
 
 
 
