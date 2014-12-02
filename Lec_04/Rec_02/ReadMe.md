@@ -352,6 +352,73 @@ The `break` will stop from inner `j` loop.
 
 ## [Functions](https://www.youtube.com/watch?v=nx6NnzIGrKE&list=PLB2BE3D6CA77BB8F7#t=2569)##
 
+A function is most simplistic form can be defined as a named object, which takes inputs(arguments), does some processing on the input (body of the function) and returns some output.
 
+A sample code for a function could be:-
 
+````
+def cube(number):
+    """Takes a number and returns the cube of that number.
+        Input: number (float or int)
+        output: number (float)"""
+    return number**3
 
+print "cube(5): ", cube(5)  
+````
+In the above code:-
+* `def` is a keyword.
+* `cube` is a function name.
+* `number` is a argument.
+* the `"""` is a doc string, which can be used to provide a specification of the function.
+* the `return` statement is optional, if `return ` statement is not given, we get `None` as the return type as shown below.
+
+````
+def times2(number):
+    """Takes a number and returns the doubles that number.
+        Input: number (float or int)
+        output: number (float)"""
+    number = number * 2
+
+print "times2(10): ", times2(10)    #prints None
+````
+
+### [Scope ](https://www.youtube.com/watch?v=nx6NnzIGrKE&list=PLB2BE3D6CA77BB8F7#t=2969) ###
+
+We have two types of scope:-
+
+* **Global** Scope
+* **Local** Scope
+
+Here is an example to understand:-
+
+````
+allHope = "Here be dragons"         #global variable
+
+def allYoursVarsAreBelongToUs(variables):
+    """Steal all you variables.
+        input: variables
+        output: none"""
+    myVariable = "Make your time"   #local variable
+    print "paramter passed into the function: ", variables
+    print "Global Variable: ", allHope
+    print "Local Variable: ", myVariable
+
+oldMemeIsOld = "Somebody set up the bomb"
+allYoursVarsAreBelongToUs(oldMemeIsOld)
+
+print "myVariable: ", myVariable    #give error.
+````
+
+The last line gives following error.
+
+````
+NameError: name 'myVariable' is not defined
+````
+
+because the variable `myVariable` have local scope.
+
+One thing to remeber is that functions are also objects in Python. So if you invoke code like this. So if a function is called without parentheses it will work as an object.
+
+````
+print cube  #prints <function cube at 0x10c4d6410>
+````
