@@ -1,4 +1,4 @@
-# Recitation 02 | Loops, Tuples, String and Functions #
+# MIT 6.00SC | Recitation 02 | Loops, Tuples, String and Functions #
 ---
 
 ## [Loops](https://www.youtube.com/watch?v=nx6NnzIGrKE&list=PLB2BE3D6CA77BB8F7#t=26) ##
