@@ -277,10 +277,23 @@ del d[1]
 
 ## Check Yourself ##
 ### What is mutability? ###
-### What is the important difference between a list and a tuple? ###
-### What is cloning? ###
-### What are the important aspects of a dictionary? ###
 
+A Mutable object can change is value, by the use of APIs like `append()`
+
+
+### What is the important difference between a list and a tuple? ###
+
+A list is mutable but a tuple is immutable.
+
+### What is cloning? ###
+
+Cloning is the copy of a Mutable object, so that we can work on the Object without actually modifying the actual object.
+
+### What are the important aspects of a dictionary? ###
+The important aspect of dictionary are:-
+
+1. There are set in place of a sequence i.e are un-ordered.
+2. The index of dictionary are not restricted to int, it can be any immutable type.
 
 
 
