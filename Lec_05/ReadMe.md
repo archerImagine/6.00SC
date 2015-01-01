@@ -274,6 +274,11 @@ del d[1]
 4. [Tuples as Sequences](http://docs.python.org/tutorial/datastructures.html#tut-tuples)
 5. [Dictionaries ](http://docs.python.org/tutorial/datastructures.html#dictionaries)
 
+## Food For thought ##
+
+As mentioned in the Lecture notes, we can have immutable type as a key to dictionary, So the idea to think is can we have tuple as a key to dictionary, because tuple is a immutable data type.
+
+* [Python: Tuples/ dictionaries as keys, select, sort ](http://stackoverflow.com/questions/4878881/python-tuples-dictionaries-as-keys-select-sort)
 
 ## Check Yourself ##
 ### What is mutability? ###
