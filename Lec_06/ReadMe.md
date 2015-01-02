@@ -1,11 +1,116 @@
 # Lecture 06 |  Recursion #
 ---
 
-## Dictionaries ##
+## [Dictionaries ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=48) ##
+As we have seen in the previous lecture notes about Dictionaries, It is a `<Key, Value>` pair. The interesting thing about this is, what things can become `keys` and which things can become `values`.
 
-## Modular Abstraction ##
+So some examples of such association for Keys.
 
-## Divide and Conquer ##
+* Keys with numbers
+* Keys with Strings
+* Keys with other objects including Dictionaries.
+
+Along with the above property, you can also have great things take the form of keys.
+
+* Keys can be just strings.
+* Keys can be a Tuple
+* Keys can be set of names.
+
+So suppose we did not had Dictionaries, in that case we can surely have code which can do the same thing. Consider the below code.  
+
+````
+def keySearch(L,k):
+    for elem in L:
+        if elem[0] == k:
+            return elem[1]
+    return None
+
+myList = [
+            [1,"One"],
+            [2,"Two"],
+        ]
+for e in myList:
+    print "e = ", e
+
+print "keySearch(myList,1): ", keySearch(myList,1)      #prints "One"
+````
+
+Now as we can see from the above code a list can be used to implement a Dictionaries, and a simple `for` loop for the searching logics in Dictionaries.
+
+Now the pertinent question arise, if we can implement a Dictionaries in this manner then what is the need of the actual data structure Dictionaries.
+
+To answer this question we have to see, how much time does searching takes in this new implementation.
+
+So on an average if we use some good algorithms for searching, we will requires some time which is dependent on the size of the list, so the bigger the list the larger the time taken.
+
+But to do the same search on the built-in Dictionaries, it takes constant time, that means it is independent from the size of the list.
+
+
+## [Modular Abstraction ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=245) ##
+
+Now can we look into this example code:-
+
+````
+EtoF = {'bread': 'du pain', 'wine': 'du vin',\
+        'eats': 'mange', 'drinks': 'bois',\
+        'likes': 'aime', 1: 'un',\
+        '6.00':'6.00'}
+
+def translateWord(word,dictionary):
+    if word in dictionary:
+        return dictionary[word]
+    else:
+        return word
+
+def translate(sentences):
+    translation = ""
+    word = ""
+    for c in sentences:
+        if c != ' ':
+            word = word + c
+        else:
+            translation = translation + ' ' +translateWord(word, EtoF)
+            word = ""
+    return translation[1:] + " " +translateWord(word, EtoF)
+
+print translate('John eats bread')
+````
+
+The above program/code is a very basic translation system. But it explains few basic programming construct.
+
+For the above code we are making few assumptions for it to work, and those assumptions are:-  
+
+* There is a single space between words which we are checking here.
+    ````
+    if c != ' ':
+            word = word + c
+    ````
+* The is no space after the last word of the sentence.
+    ````
+    return translation[1:] + " " +translateWord(word, EtoF)
+    ````
+
+So the first programming construct that we learn from this code is to make you assumptions clear.
+
+The next thing which we learn can be found if we know the answer to this question:-
+
+We have these function in the above code:-
+
+* `translateWord(word,dictionary)`
+* `translate(sentences)`
+
+Why to divide this into these 2 functions in place of writing everything in one function. 
+
+The answer to the above question is:-
+
+* The first thing which we get is small function or piece of code, which we can test individually and check for its correctness, in place of a big chunk of code.
+* The second thing which we achieve is the next programming construct i.e. **Modular Abstraction**.
+
+So with **Modular Abstraction** we get a perfect division of code which helps in segregating piece of code which are not interdependent so that we can change the internal structure of the code any time if we have this abstraction.
+
+## [Divide and Conquer ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=728)##
+
+The Modular Abstraction is a specific implementation of a more generic term called **Divide and Conquer**.
 
 ## Recursion ##
 
