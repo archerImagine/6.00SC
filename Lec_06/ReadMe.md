@@ -1,6 +1,21 @@
 # Lecture 06 |  Recursion #
 ---
 
+## Dictionaries ##
+
+## Modular Abstraction ##
+
+## Divide and Conquer ##
+
+## Recursion ##
+
+## Tower of Hanoi ##
+
+## Base Case ##
+
+## Fibonacci sequence ##
+
+
 ---
 ## References ##
 ### Links ###
