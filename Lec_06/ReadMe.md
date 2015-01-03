@@ -192,13 +192,62 @@ hanoi(5,'f','t','s')
 
 ### [Palindrome ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=1614) ###
 
-One more use case to use recursion is Palindrome.
+One more use case to use recursion is [Palindrome ](http://en.wikipedia.org/wiki/Palindrome).
+
+The base for a string to be palindrome is that it is of length `1` or `0`. So now we have the base case, how to break it into problems of smaller size of the same type.
+
+Compare the first and last character are same take them out and continue if not equal, exit there as it is not a palindrome, so we will have smaller version of the same problem.
+
+So the same can be written in code as:-
+
+````
+def toChars(s):
+    import string
+    s = string.lower(s)
+    ans = ''
+    for c in s:
+        if c in string.lowercase:
+            ans = ans + c
+    return ans
+
+def isPal(s):
+    if len(s) <= 1:
+        return True
+    else:
+        return s[0] == s[-1] and isPal(s[1:-1])
+
+def isPalindrome(s):
+    """Returns True if s is a palindrome and False otherwise"""
+    return isPal(toChars(s))
 
 
-## Base Case ##
+print isPalindrome('Guttug')
+````
+### [Fibonacci sequence ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=2408) ###
 
-## Fibonacci sequence ##
+One of the classic example of recursion is [Fibonacci Sequence ](http://en.wikipedia.org/wiki/Fibonacci_number)
 
+TO solve the problem here is the code for the same:-
+
+````
+def fibonacci(x):
+    """assumes x an int >= 0
+        Returns Fibonacci of x"""
+    assert type(x) == int and x >=  0
+    if x == 0 or x == 1:
+        return 1
+    else:
+        return fibonacci(x-1) + fibonacci(x-2)
+
+
+
+def testFib(n):
+    print "Animesh"
+    for i in range(n+1):
+        print ('fib of', i, '=', fibonacci(i))
+
+testFib(5)
+````
 
 ---
 ## References ##
