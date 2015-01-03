@@ -112,9 +112,34 @@ So with **Modular Abstraction** we get a perfect division of code which helps in
 
 The Modular Abstraction is a specific implementation of a more generic term called **Divide and Conquer**.
 
-**Divide and Conquer** is the idea of taking a big/large problem and breaking them into some simpler problems.
+**Divide and Conquer** is the idea of taking a big/large problem and breaking them into some simpler problems. These simple problems have 2 properties.
 
-## Recursion ##
+1. Small problems are easier to solve than the big problem.
+2. Solutions to small problems can **easily** be combined to solve the big problems.
+
+## [Recursion ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=866) ##
+
+**Recursion** is a technique for Divide and Conquer. Recursion is used in two ways in computer science.
+
+1. Way of describing or defining problems.
+2. Way of designing solutions.
+
+A recursive definition of a problem have 2 parts:-
+
+1. The first part is very simple. This is called ***BASE CASE***
+2. The second part which is called **recursive or inductive case**, its job is to reduce the bigger problem to a much simpler problem of the same type in addition we might have to do some simple operations.
+
+So now let us see some example of **Recursions**, 
+
+### [Exponentiation ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=1111) ###
+
+Lets see how we can use recursion to solve integer Exponentiation. As we all know the definition of Exponentiation is,
+
+````
+
+````
+
+
 
 ## Tower of Hanoi ##
 
