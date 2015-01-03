@@ -112,6 +112,8 @@ So with **Modular Abstraction** we get a perfect division of code which helps in
 
 The Modular Abstraction is a specific implementation of a more generic term called **Divide and Conquer**.
 
+**Divide and Conquer** is the idea of taking a big/large problem and breaking them into some simpler problems.
+
 ## Recursion ##
 
 ## Tower of Hanoi ##
