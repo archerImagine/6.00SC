@@ -136,12 +136,64 @@ So now let us see some example of **Recursions**,
 Lets see how we can use recursion to solve integer Exponentiation. As we all know the definition of Exponentiation is,
 
 ````
+(b)^ n = b * b * b * .......b (n times)
+````
 
+So if we have to solve the above equation using recursion we have to think, how to reduce this big problem into small problem and the way to do this is.
+
+````
+(b)^ n = b * (b * b * .......b) (n - 1 times)
+````
+Now this might not look a great thing to do, but notice what we did, we effectively telling ourself that the big problem (n) times has reduced to (n - 1) times and it will continue till n > 0.
+
+And when n = 0, we can say (b)n = 1
+
+So combining these two we can understand the power of recursion. So the code for this would be.
+
+````
+def simpleExponentiation(b,n):
+    if n == 0 :
+        return 1
+    else:
+        return b * simpleExponentiation(b,n-1)
+
+
+print "simpleExponentiation(5,3): ", simpleExponentiation(5,3)
+````
+
+### [Tower of Hanoi ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=1310) ###
+
+One more use case for using recursion is the famous [Tower of Hanoi ](http://en.wikipedia.org/wiki/Tower_of_Hanoi), which helps us to understand a difficult problem in simple steps. So we can solve it by using:-
+
+> A key to solving this puzzle is to recognize that it can be solved by breaking the problem down into a collection of smaller problems and further breaking those problems down into even smaller problems until a solution is reached
+> * label the pegs A, B, C — these labels may move at different steps
+> * let n be the total number of discs
+> * number the discs from 1 (smallest, topmost) to n (largest, bottommost)
+> To move n discs from peg A to peg C: 
+> * move n−1 discs from A to B. This leaves disc n alone on peg A
+> * move disc n from A to C
+> * move n−1 discs from B to C so they sit on disc n
+
+So the sample code for the above recursion will be:-
+
+````
+def hanoi(n,f,t,s):
+    if n == 1:
+        print 'move from ' +f +' = ' +t
+    else:
+        hanoi(n-1,f,s,t)
+        hanoi(1,f,t,s)
+        hanoi(n - 1,s,t,f)
+
+
+hanoi(5,'f','t','s')
 ````
 
 
+### [Palindrome ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=1614) ###
 
-## Tower of Hanoi ##
+One more use case to use recursion is Palindrome.
+
 
 ## Base Case ##
 
