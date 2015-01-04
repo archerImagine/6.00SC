@@ -45,6 +45,7 @@ So on an average if we use some good algorithms for searching, we will requires 
 
 But to do the same search on the built-in Dictionaries, it takes constant time, that means it is independent from the size of the list.
 
+There is also a discussion on [Reddit.com | What are some great blogs or article to read for understanding Dictionaries in Python better?](http://www.reddit.com/r/learnpython/comments/2r46ro/what_are_some_great_blogs_or_article_to_read_for/)
 
 ## [Modular Abstraction ](https://www.youtube.com/watch?feature=player_detailpage&list=PLB2BE3D6CA77BB8F7&v=WbWb0u8bJrU#t=245) ##
 

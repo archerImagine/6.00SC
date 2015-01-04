@@ -279,6 +279,7 @@ del d[1]
 As mentioned in the Lecture notes, we can have immutable type as a key to dictionary, So the idea to think is can we have tuple as a key to dictionary, because tuple is a immutable data type.
 
 * [Python: Tuples/ dictionaries as keys, select, sort ](http://stackoverflow.com/questions/4878881/python-tuples-dictionaries-as-keys-select-sort)
+* [What are some example of tuple as a key of dictionary?](http://www.reddit.com/r/learnpython/comments/2qzoiy/what_are_some_example_of_tuple_as_a_key_of/)
 
 ## Check Yourself ##
 ### What is mutability? ###
