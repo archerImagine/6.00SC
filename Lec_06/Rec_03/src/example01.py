@@ -17,6 +17,7 @@ print "tupB[0] is : ", tupB[0]
 print "tupB[0][1] is : ", tupB[0][1]
 print "tupB[2] is : ", tupB[2]
 print "tupB[-1] is : ", tupB[-1]
+print "tupB[len(tupB) - 1] is : ", tupB[len(tupB) - 1]
 
 print "\nSlicing Operations: \n"
 print 'tupA[0:1] is: ', tupA[0:1]
