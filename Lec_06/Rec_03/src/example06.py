@@ -37,3 +37,13 @@ print staff
 
 for TA,Email in staff.items(): # staff.items() returns a key,value pairs
 	print "TA: ", TA, " his mailid ", Email
+
+
+#sorted Dictionaries
+
+keys = staff.keys()	
+
+keys.sort()
+
+for k in keys:
+	print k, staff[k]
