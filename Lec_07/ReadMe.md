@@ -1,4 +1,4 @@
-# Lecture 01 | Debugging #
+# Lecture 07 | Debugging #
 
 ## Introduction ##
 
