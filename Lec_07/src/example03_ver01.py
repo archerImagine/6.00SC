@@ -17,6 +17,7 @@ def silly(n):
 	for i in range(n):
 		result = []
 		elem = raw_input("Enter Something: ")
+		print "result: ", result
 		result.append(elem)
 	if isPal(result):
 		print 'Is a palindrome'
@@ -24,5 +25,5 @@ def silly(n):
 		print "Is not a palindrome"
 
 
-silly(5)		
+silly(2)		
 		

@@ -14,9 +14,10 @@ def silly(n):
 		Gets n input from user
 		Prints Yes, if the input is a palindrome; No otherwise"""
 	assert type(n) == int and n > 0
+	result = []
 	for i in range(n):
-		result = []
 		elem = raw_input("Enter Something: ")
+		print "result: ", result
 		result.append(elem)
 	if isPal(result):
 		print 'Is a palindrome'
@@ -24,5 +25,5 @@ def silly(n):
 		print "Is not a palindrome"
 
 
-silly(5)		
+silly(2)		
 		
