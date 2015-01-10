@@ -5,3 +5,12 @@
 We will start from the last recitation's topic, Recursion.
 
 
+## [Floating Point ](https://www.youtube.com/watch?v=7BpomdjZ_Os&list=PLB2BE3D6CA77BB8F7#t=945) ##
+
+* [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point)
+
+
+## [Pseudo Code](https://www.youtube.com/watch?v=7BpomdjZ_Os&list=PLB2BE3D6CA77BB8F7#t=1539) ##
+
+
+
