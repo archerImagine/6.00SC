@@ -12,5 +12,8 @@ We will start from the last recitation's topic, Recursion.
 
 ## [Pseudo Code](https://www.youtube.com/watch?v=7BpomdjZ_Os&list=PLB2BE3D6CA77BB8F7#t=1539) ##
 
+## [Debugging ](https://www.youtube.com/watch?v=7BpomdjZ_Os&list=PLB2BE3D6CA77BB8F7#t=2585) ##
+
+
 
 
