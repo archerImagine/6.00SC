@@ -243,7 +243,6 @@ def fibonacci(x):
 
 
 def testFib(n):
-    print "Animesh"
     for i in range(n+1):
         print ('fib of', i, '=', fibonacci(i))
 
