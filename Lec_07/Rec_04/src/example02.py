@@ -5,7 +5,7 @@ def iteratativeFibonacci(n):
 		n is an int and >= 0
 	"""
 	if n == 0 and n == 1 :
-		return n
+		return 1
 	else:
 		# Hold the currect and the previous Fibonacci number
 		previousFib = 0
