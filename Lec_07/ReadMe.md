@@ -479,9 +479,14 @@ isPalTest()
 
 ### Why do computers use binary representations? ###
 
+Computers are made up of Switches, which have only two states `0` and `1`. 
+
 ### Why shouldn't we test for equality with floats? ###
 
+The representation of floats in computer is not exact, because computers can only store binary numbers, and some of the approximation of floats are not accurate.
+
 ### When debugging, how can you ensure that the values in your program are the ones you think they are? ###
+We can check by using `print` statements.
 
 
 

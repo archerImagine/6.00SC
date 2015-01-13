@@ -273,8 +273,14 @@ testFib(5)
 
 ## Check Yourself ##
 ### What is recursion? ###
+
+Recursion is a 'Divide and Conquer' technique, in which we have a base case which provides us with a answer immediately, and then we break the function to call itself with reduced input size or smaller size, so that it approaches the base case. 
+
 ### What is a recursive case? ###
+The part of a function which call's itself with a smaller input is called the recursive case.
+
 ### What is a base case? ###
+Base case, is the condition in a recursive call, which gives us a answer immediately. Base Case is the end point of recursion.
 
 
 

@@ -48,7 +48,7 @@ def IterativeMultiplication(m,n):
 
 Now if you see the two example, it feels (which is subjective) that the iterative implementation is much simpler that the recursive implementation. But both these are subjective understanding, for some the recursive approach is simpler to understand.
 
-So we cannot define which approach is better, it just depends on what is the understanding level of an individual over these 2 techniques. But some problems like **Fibonacci**, **factorial** are better implemented in recursive algorithm because it matches the mathematical defination to the **T**.
+So we cannot define which approach is better, it just depends on what is the understanding level of an individual over these 2 techniques. But some problems like **Fibonacci**, **factorial** are better implemented in recursive algorithm because it matches the mathematical definition to the **T**.
 
 
 So check both the approaches for Fibonacci series.
