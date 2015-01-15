@@ -1,3 +1,4 @@
+# Factorial computation.
 def f(n):
 	assert n >= 0
 	answer = 1
