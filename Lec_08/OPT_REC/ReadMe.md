@@ -45,8 +45,100 @@ Polynomial Time < Exponential Time
 
 All the above are *True*, because Big -O is bothered with the higher power.
 
-12:00
+## [Constant Time Examples](https://www.youtube.com/watch?v=8I0BmT1ccuw&list=PLB2BE3D6CA77BB8F7#t=748) ##
 
+Consider the below example:-
+
+
+````
+def inc(x):
+    return x+1
+````
+
+even this is constant time:-
+
+````
+    def bar(x, y):
+        z = x + y
+        w = x * y
+        q = (w**z) % 870
+        return 9*q
+````
+
+## [Linear Time ](https://www.youtube.com/watch?v=8I0BmT1ccuw&list=PLB2BE3D6CA77BB8F7#t=784) ##
+
+Here is an example of linear time code:-
+
+````
+    def mul2(x, y):
+    result = 0
+        for i in range(y):
+        result += x
+    return result
+````
+
+The `for` loop in the above code is an indication that it will be atleast `O(n)`
+
+Not always, the operation inside a `for` loop is constant time, consider this example:-
+
+````
+    def count_same_ltrs(a_str, b_str):
+    count = 0
+        for char in a_str:
+            if char in b_str:
+            count += 1
+    return count
+````
+
+The above is not linear, because the `if` condition also have to traverse the `b_str`, so this is `O(n^2)`
+
+
+## [Recursion ](https://www.youtube.com/watch?v=8I0BmT1ccuw&list=PLB2BE3D6CA77BB8F7#t=1555) ##
+
+Consider the below example for recursion in factorial program.
+
+````
+    def r_factorial(n):
+        if n <= 0:
+            return 1
+        else:
+            return n*r_factorial(n-1)
+````
+
+To find the complexity of a recursive function you have to find out the number of recursive call it will make. So for the above example it will make `n` calls. So this will be Linear.
+
+Now consider this example:-
+
+````
+    def foo(n):
+        if n <= 1:
+            return 1
+        return foo(n/2) + 1
+````
+
+So solve this we need to find this
+
+````
+n/2^n = 1
+n = 2^k
+k = log n
+````
+
+So this is `O(Log N)`
+
+## [Factorial ](https://www.youtube.com/watch?v=8I0BmT1ccuw&list=PLB2BE3D6CA77BB8F7#t=1816) ##
+
+For a factorial, we might consider that it is linear because of this equation:-
+
+````
+fib(n) = fib(n - 1) + fib(n -2)
+````
+
+But it is not, if we draw the call structure, we will see a tree. As shown below:-
+
+![Fibonacci ](http://www.math.ucla.edu/~wittman/10a.1.10w/ccc/ch14/images/fib_tree.png)
+
+So as you can see, the depth of the tree is n, and at each level we have a branching factor of 2, so a loose calculation will give a complexity of `O(n^2)`
 
 ## References ##
 ### Links ###
