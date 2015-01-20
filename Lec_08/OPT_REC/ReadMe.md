@@ -1,6 +1,6 @@
 # MIT 6.00SC | Optional Recitation | Algorithm Complexity and Class Review #
 
-TO get a clear picture of this Recitation, kindly read the [Recitation handout (PDF)](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/unit-1/lecture-8-efficiency-and-order-of-growth/MIT6_00SCS11_rec04.pdf).
+To get a clear picture of this Recitation, kindly read the [Recitation handout (PDF)](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/unit-1/lecture-8-efficiency-and-order-of-growth/MIT6_00SCS11_rec04.pdf).
 
 The first question to ask ourself is **What is Big-O notation?**
 
