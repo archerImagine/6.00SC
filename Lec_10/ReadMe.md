@@ -130,12 +130,124 @@ A very good Hash function is identified by how distributed it expands its values
 
 In python, Dictionary use this concepts, so it looks into the `keys` and creates a large enough bucket to evenly distribute values, if we are left out of even distribution, it rehashes everything with a large bucket.
 
-All immutable objects can be hashed, that is the reason, the `keys` in the Dictionary are immutable. We need a immutable object for hashing because, we need to get the same value whenever we pass it to hash, but if it mutates it will give me a different value than when we stored.
+Any type of immutable objects can be hashed, that is the reason, that `keys` in the Dictionary are immutable. We need a immutable object for hashing because, we need to get the same value whenever we pass it to hash, but if it mutates it will give me a different value than when we stored.
+
+We can also hash a string and not only integers, but a string has to be converted to a integer with some logic, kindly see below the code for doing it with strings:-
+
+````
+def hashElem(e):
+        global numBuckets
+        if type(e) == int:
+            val = e
+        if type(e) == str:
+            val = 0
+            shift = 0
+            for c in e:
+                val = val + shift * ord(c)
+                shift += 1
+        return val % numBuckets
+````
+
+The following function `ord(c)` gives a ASCII code of the character.
 
 ## [Exceptions ](https://www.youtube.com/watch?v=pjLbxB9TXJs&list=PLB2BE3D6CA77BB8F7#t=1253) ##
 
+Exceptions are everywhere in python, The below code will raise a exception.
+
+````
+test = [1,2,3]
+test[12]
+````
+
+This will give the below error.
+
+````
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+IndexError: list index out of range
+````
+
+Anything ending with `Error` is a exception, like `IndexError` is a exception.
+
+The above exception is **Unhandled Exception**, because it crashes once exception happens.
+
+The Unhandled exception can be handled, so this is a perfect flow of control option in python.
+
+The general syntax of handling exception is given below.
+
+````
+try:
+    #some Code
+except:
+    #Some exception code.
+````
+
+Starts with instruction in `try` block, and nothing wrong happens it will jump to instruction after the `except` block, but if a exception is raised it will stop execution of `try` block and execute `except` block. `try` can be nested.
+
+Consider the below example:-
+
+````
+def readVal(valType,requestMsg,errorMsg):
+    numTries = 0
+    print numTries
+    while numTries < 4:
+        val = raw_input(requestMsg)
+        try:
+            val = valType(val)
+            return val
+        except ValueError:
+            print errorMsg
+            numTries += 1       
+    raise TypeError('Num tries excedded.')
+````
+
+So the above code does a very simple thing, it takes 3 inputs 
+
+* valType : which is a type, since everything is a object in python, we can pass a type to function
+* requestMsg : This is a string
+* errorMsg : This is also a string
+
+Now if we pass `int` as a first argument, and input string to it, it will print the error msg and then try again.
+
+Since the method `readVal` raises an exception, we can also handle it in main code like this:-
+
+````
+try:
+    a = readVal(int,"Enter int: ","Not a Int")
+    print "a: ", a
+except TypeError, s:
+    print "s: ", s
+````
+
+If we do not give the `except` some name like I have given here `except TypeError, s:`, it will go in that block for all exception. So it will catch any exception, and usually we do not follow this practice to leave the `except` name empty, because it basically means I have not anticipated the error.
+
 ## [Class ](https://www.youtube.com/watch?v=pjLbxB9TXJs&list=PLB2BE3D6CA77BB8F7#t=2118) ##
 
+We have already seen the concept of **Modules**, which is a collection of related function.
+
+Example:-
+
+````
+import math
+
+math.log()
+````
+
+The module helps in importing a lot of related information at once, and then use the `.` notation to access the related function like `Math.log`. The `.` notation helps in identifying the context.
+
+Like we can have one method `member()` in two modules `set` and `table`, so when we call with `set.member()` we know which one to invoke. `.` notations avoids conflicts.
+
+Class is like a module, it is collection of Data and Functions. Function which operates on the data, they are bound together, so we can invoke with proper context. This is the key to **Object Oriented Programming**. 
+
+When we did it `L.append()`. Where `L` provides the context.
+
+The data of a class are called **attributes**.
+
+**Message Passing Metaphor** : When we write `L.append(e)`, I am passing a message `append(e)` to the object `L`.Then the message is identified by object `L` and then executes the corresponding method.
+
+**Method is a function associated with a Object.**
+
+Class is a collection of objects with identical characteristics that form a type. So class introduces new type into the language. `Dict` and `List` are built in classes.
 
 ## Reference ##
 ### Links ###
@@ -164,11 +276,23 @@ All immutable objects can be hashed, that is the reason, the `keys` in the Dicti
 
 
 ### Check Yourself ###
-### What does hashing do? ###
-### What is a bucket? ###
-### What are try blocks for? ###
-### What does polymorphic mean? ###
-### What is a module? ###
-### What is an object? ###
 
+### What does hashing do? ###
+It converts an large range of value/objects into a small fixed range values.
+
+### What is a bucket? ###
+A list of item which have the same hash value.
+
+### What are try blocks for? ###
+try block are piece of code where we do error prone things because the program's input may not be within the control of the program.
+
+### What does polymorphic mean? ###
+Taking multiple forms, like `def readVal(valType,requestMsg,errorMsg)`, so we can pass in any `valType`
+
+### What is a module? ###
+Module is a collection of related function.
+
+
+### What is an object? ###
+A collection of data and functions which operates on that data.
 
