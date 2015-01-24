@@ -15,4 +15,4 @@ def extendedEuclid(a,b):
 		print (d,x,y)
 		return (d,x,y)
 
-print extendedEuclid(99,78)		
+print extendedEuclid(18,30)		
