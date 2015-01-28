@@ -102,8 +102,116 @@ The things which we are hiding are:-
 * **Class Variable**:  Variables which are associated with a class.
     - We only have one copy of the class variable, like we have just one `Class`
 
+## [Inheritance ](https://www.youtube.com/watch?v=FBpe3xFvPrQ&list=PLB2BE3D6CA77BB8F7#t=1338) ##
 
-[20:22](https://www.youtube.com/watch?v=FBpe3xFvPrQ&list=PLB2BE3D6CA77BB8F7#t=1222)
+When we design program using OOP, we are not looking at the implementation details, we should be able to think in terms of abstraction. Inheritance is a important feature in this regards.
+
+Inheritance is used to setup hierarchy of Abstraction. The idea is to identify the similarity between most of the object and make a class which will have this common functionality. We should be able to identify if there is a shared attributes between different class.
+
+So to design a MIT Database the base class will look like this:-
+
+````
+import datetime
+
+class Person(object):
+    def __init__(self, name):
+        #Create a person with name
+        self.name = name
+        try:
+            firstBlank = name.rindex(' ')
+            # print "__init__: firstBlank: ", firstBlank
+            self.lastName = name[firstBlank+1:]
+        except :
+            self.lastName = name
+        self.birthDay = None
+    def getLastName(self):
+        #returns self's last name
+        return self.lastName
+    def setBirthday(self,birthDate):
+        #assumes that self's birthday is of type datetime.date
+        #sets self's birthday to birthDate
+        assert type(birthDate) == datetime.date
+        self.birthDay = birthDate
+    def getAge(self):
+        #assumes that self's birthday is set
+        #returns self's age in days
+        assert self.birthDay != None
+        return (datetime.date.today() - self.birthDay).days
+    def __lt__(self,other):
+        #returns True if self name is lexicographically greater
+        #than other's name, and False Otherwise
+        if self.lastName == other.lastName:
+            return self.name < other.name
+        return self.lastName < other.lastName
+    def __str__(self):
+        return self.name
+````
+
+Now lets dissect this code:-
+
+* `def __init__(self, name):` is the same as before, nothing new, it will be called when the object is created, with the parameter `name`.
+* `def getLastName(self):` is a method which will return me the value of the attribute `lastName`, the reason this method is present is because we do not want user of this abstraction to have access to the data attribute `lastName` directly, so that we can put some checks in place.
+    - Mostly we will have method which will fetch `get` something, which will return the information about the instance of the class.
+* `def setBirthday(self,birthDate):` this is a set method, the reason for its existence is similar to get method.
+* `def __lt__(self,other):` this is another of those magic method, this will be used to compare two object of `Person` type. The reason we are using `__lt__` and not any function name as `less` etc, is because `__lt__` is predefined in Python, just like `__str__` which will be called automatically when we will do comparison `<` on Person object. So this Person class will behave exactly like any inbuilt data type, but if we have a special function name like `less` though it will get the job done, but it will not be same as inbuilt data type.
+
+Lets consider this class:-
+
+````
+class MITPerson(Person):
+    nextIDNum = 0
+    def __init__(self, name):
+        #super(MITPerson, self).__init__()
+        Person.__init__(self,name)
+        self.idNum = MITPerson.nextIDNum
+        MITPerson.nextIDNum += 1
+    def getIdNum(self):
+        return self.idNum
+    def __lt__(self, other):
+        return self.idNum < other.idNum
+    def isStudent(self):
+        return type(self)==UG or type(self)==G
+````
+
+* The class `MITPerson` is a subclass of `Person`, because we are passing `Person` as a argument in place of `Object` which we were passing till now, in this line, `class MITPerson(Person):`, so what this means is I want all the attributes of class `Person`, but `MITPerson` will have some additional attributes and functionality.
+* `nextIDNum = 0` is a **class variable**, that means this is common to the class and not to just one object of the class. So this is shared across object of this class type.
+* `def __lt__(self, other):` The base class, `Person ` also had `__lt__` method, which I am **overriding** here. Overriding helps in modifying the base class methods to suits the sub class attributes. Because in the case of `MITPerson` we want to check the comparison based on `nextIDNum` and not the `firstName` or `lastName` basis as done in the `Person ` class.
+    - Consider that some time we need to use the functionality provided in the super class and not the overridden functionality in the subclass, we can use it by calling `Person.__lt__(p1, p2)`
+* `p4 < p3` : when we do comparision like this, what it will do is take `p4`, checking is `__lt__` method and pass `p3` as a argument.
+
+Now consider this new class:-
+
+````
+class UG(MITPerson):
+    def __init__(self, name):
+        MITPerson.__init__(self, name)
+        self.year = None
+    def setYear(self, year):
+        if year > 5:
+            raise OverflowError('Too many')
+        self.year = year
+    def getYear(self):
+        return self.year
+````
+
+Lets dissect this code:-
+
+* `class UG(MITPerson):` `UG` is a subclass of `MITPerson.`
+* `MITPerson.__init__(self, name)`: What is piece of code is doing is that it will call `MITPerson`s `__init__` and then continue to initialize itself.
+* What happens when we call this `ug2 < ug1`?
+    - The reason for this question is because we do not have `__lt__` function in `UG` class, so since it is inheriting from `MITPerson`, it will invoke the `__lt__` of `MITPerson`, if it was not present in `MITPerson`, then it will go further up in the hierarchy till it reaches `object `.
+
+Now consider this class:-
+
+````
+class G(MITPerson):
+    pass
+
+g1 = G('Mitch Peabody')
+````
+
+* Now as you can see the class `G` is not doing anything just saying `pass`, this means, `G` is a `MITPerson` with no special property.
+* The reason for doing this is we can check for `type`. As this will be `type(g1)` will be `G`
 
 ## Reference ##
 ### Links ###
