@@ -236,3 +236,5 @@ g1 = G('Mitch Peabody')
 
 * Since python does not enforce data hiding, is there a naming convention to identify private members of a class.
 * Why is Data hiding not enforced in Python like Java.
+
+The answers to the above question can be found [here](http://www.reddit.com/r/learnpython/comments/2tukft/mit_ocw_few_question_about_oop_in_python_based_on/).
