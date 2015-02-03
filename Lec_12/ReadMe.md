@@ -19,7 +19,6 @@ class Person(object):
         except :
             self.lastName = name
         self.birthDay = None
-
     def getLastName(self):
         #returns self's last name
         return self.lastName
@@ -166,6 +165,7 @@ for s in SixHundred.allStudents():
 
 * [What does the yield keyword do in Python?](http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python )
 * [Improve Your Python: 'yield' and Generators Explained ](http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/)
+* [Reddit | [MIT OCW] What is the use of python yield statement and difference with a list?](http://www.reddit.com/r/learnpython/comments/2uj05g/mit_ocw_what_is_the_use_of_python_yield_statement/)
 
 
 ## [Computational Model](https://www.youtube.com/watch?v=C2BBAW78fYg&list=PLB2BE3D6CA77BB8F7#t=976) ##
@@ -203,6 +203,160 @@ Start with this [Wiki ](http://en.wikipedia.org/wiki/Brownian_motion)
 
 Brownian motion is a example of **Random Walk.**
 
+The basic idea behind **Random Walk** is, if we have a system of interacting objects, we model a simulation under the assumption that each one of those things is going to move some steps under some random distribution. This is useful in these scenario.
+
+* Modeling physical process. ex, weather forecast.
+* Modeling biological process. 
+* Useful in social process. ex, stock market.
+
+Consider the below scenario:-
+
+Consider a drunken student out in a big field, They start in the middle of the field, every second the student can take 1 step in 1 of the 4 cardinal direction (North,South,East,West), with each direction equally likely. After 1000 steps how far aways is the student from the initial position.
+
+So here is a table explains the steps:-
+
+| No of Steps | Distance |   Probability   |
+| ----------- | :------: | :-------------: |
+| 1 Step      |    1     |        1        |
+| 2 Step      |    0     |       1/4       |
+|             |  2^1/2   |       1/2       |
+|             |    2     |       1/4       |
+| 3 Step      |    1     |       1/4       |
+|             |    1     | 1/2 * 1/2 = 1/4 |
+|             | 5 ^ 1/2  |       1/4       |
+|             |    1     |       1/16      |
+|             | 5 ^ 1/2  |       1/8       |
+|             |    3     |       1/16      |
+
+Summing it up:-
+
+| No of Steps |                 Distance                |
+| ----------- | :-------------------------------------: |
+| 1 Step      |                    1                    |
+| 2 Step      | (0 * 1/4) + (2^1/2 * 1/2) + (2/4) = 1.2 |
+| 3 Step      |                   1.5                   |
+
+The reason for doing above steps is to get a feel of how things are going to happen. So what we derived from above is, After n-step, the drunk student will be little farther away from his initial position.
+
+So lets us make a computational model based on our findings till now.
+
+We have understood that we should model classes based on things we most likely to see. Some of them are:-
+
+* We have a DRUNK
+* We have a FIELD
+* Were the DRUNK is in the FIELD, LOCATION.
+
+So here is the code for these classes:-
+
+````
+import random
+
+class Location(object):
+    def __init__(self, x,y):
+        """x and y are float"""
+        self.x = x
+        self.y = y
+    def move(self,deltaX,deltaY):
+        """deltaX and deltaY are float"""
+        return Location(self.x + deltaX, self.y + deltaY)
+    def getX(self):
+        return self.x
+    def getY(self):
+        return self.y
+    def distFrom(self,other):
+        ox = other.x
+        oy = other.y
+        xDist = self.x - ox
+        yDist = self.y - oy
+        return (xDist**2 + yDist**2) ** 0.5
+    def __str__(self):
+        return '<' + str(self.x) + ', ' + str(self.y) + '>'
+
+class Field(object):
+        def __init__(self):
+            self.drunks = {}
+        def addDrunk(self,drunk,loc):
+            if drunk in self.drunks:
+                raise ValueError('Duplicate Drunk')
+            else:
+                self.drunks[drunk] = loc
+        def moveDrunk(self,drunk):
+            if not drunk in self.drunks:
+                raise ValueError('Drunk not in field')
+            xDist,yDist = drunk.takeStep()
+            self.drunks[drunk] = self.drunks[drunk].move(xDist, yDist)
+        def getLoc(self, drunk):
+            if not drunk in self.drunks:
+                raise ValueError('Drunk not in field')
+            return self.drunks[drunk]
+
+class Drunk(object):
+    def __init__(self, name):
+        self.name = name
+    def takeStep(self):
+        stepChoices = [(0,1), (0,-1), (1, 0), (-1, 0)]
+        return random.choice(stepChoices)
+    def __str__(self):
+        return 'This drunk is named ' + self.name
+````
+
+So lets dissect this code:-
+
+1. `Location ` Class:
+    1. `def __init__(self, x,y)`: Takes two value, `x` and `y` which are initialized into instance variable.
+    2. `getX()` and `getY()`: returns the `x` and `y` coordinates of the instance variable.
+    3. `distFrom()`: returns the distance between initial position to new position.
+    4. `move()`: modify the instance variable based on the `deltaX` and `deltaY`
+    5. Few Assumptions made in this class:-
+        1. This is just a 2D model.
+        2. `deltaX` and `deltaY` are floats meaning, in future we can move along the diagonal and not only cardinal direction.
+2. `Field ` Class: Will map drunks to location.
+    1. `def __init__(self):` creates a dictionary of `drunks`.
+    2. `addDrunk(self, drunk, loc)`: 
+        1. Validates the `drunk ` is not a duplicate.
+        2. Adds the drunk with its location.
+    3. `moveDrunk(self,drunk):`
+        1. `xDist,yDist = drunk.takeStep()` : gets the x,y coordinates.
+        2. `self.drunks[drunk] = self.drunks[drunk].move(xDist, yDist)`
+            1. `self.drunks[drunk]` get the particular `drunk `
+            2. call `move()` on this drunk, and updates its location.
+    4. `getLoc(self, drunk):` returns the location of the drunk
+    5. Assumption made in this class.
+        1. No constraints on location, i.e. no hard boundary.
+        2. Can have multiple drunks, and they can collide.
+        3. Says nothing about the pattern in which the drunk moves.
+3. `Drunk ` Class
+    1. Initialized with a `name `
+    2. `takeStep()`: only method, which takes a random coordinates, from a set, and every coordinates is equally likely.
+
+There is a bug in the above code, which we will see next time. Here is the test code for the above:-
+
+````
+def walk(f, d, numSteps):
+    start = f.getLoc(d)
+    for s in range(numSteps):
+        f.moveDrunk(d)
+    return(start.distFrom(f.getLoc(d)))
+
+def simWalks(numSteps, numTrials):
+    homer = Drunk('Homer')
+    origin = Location(0, 0)
+    distances = []
+    for t in range(numTrials):
+        f = Field()
+        f.addDrunk(homer, origin)
+        distances.append(walk(f, homer, numTrials))
+    return distances
+
+def drunkTest(numTrials):
+    # for numSteps in [10, 100, 1000, 10000, 100000]:
+    for numSteps in [0,1]:
+        distances = simWalks(numSteps, numTrials)
+        print 'Random walk of ' + str(numSteps) + ' steps'
+        print '  Mean =', sum(distances)/len(distances)
+        print '  Max =', max(distances), 'Min =', min(distances)
+drunkTest(10)        
+````
 
 ## Reference ##
 ### Links ###
