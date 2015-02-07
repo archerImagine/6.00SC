@@ -171,7 +171,9 @@ pylab.plot([1,2,3,4], [1,2,3,4])
 pylab.plot([1,4,2,3], [5,6,7,8])
 pylab.show()
 ````
+In the above code, the `show()` method will finally display the result as a plot. Mostly we write intermediate steps into a file, and then finally writing it. Also `show()` method should be used only once in a program and it is mostly at the end of the text. 
 
+34.00
 
 ## Reference ##
 ### Links ###
