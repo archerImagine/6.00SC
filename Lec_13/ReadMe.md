@@ -173,7 +173,30 @@ pylab.show()
 ````
 In the above code, the `show()` method will finally display the result as a plot. Mostly we write intermediate steps into a file, and then finally writing it. Also `show()` method should be used only once in a program and it is mostly at the end of the text. 
 
-34.00
+Consider the below example:-
+
+````
+import pylab
+
+pylab.figure(1)
+pylab.plot([1,2,3,4], [1,2,3,4])
+pylab.figure(2)
+pylab.plot([1,4,2,3], [5,6,7,8])
+pylab.savefig('firstSaved')
+pylab.figure(1)
+pylab.plot([5,6,7,10])
+pylab.savefig('secondSaved')
+
+pylab.show()
+````
+
+We can also, label x and y axis, which a graph title:--
+
+````
+pylab.title('5% Growth, Compounded Annually')
+pylab.xlabel('Years of Compounding')
+pylab.ylabel('Value of Principal ($)')
+````
 
 ## Reference ##
 ### Links ###
