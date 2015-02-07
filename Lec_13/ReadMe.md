@@ -148,7 +148,31 @@ What is the probability of getting all `1`, is `1/2^10`.
 
 Probability = what fraction of the possible results have the property we are testing for.
 
-[PyLab](matplotlib.sourceforge.net)
+Probability lies between `0` to `1`. `0` meaning will never happen, `1` means most certain to happen.
+
+Another interesting question will be, what is the probability of getting anything other than all `1`.
+
+````
+1 - 1/2^10
+````
+
+## [Data Visualization ](https://www.youtube.com/watch?list=PLB2BE3D6CA77BB8F7&feature=player_detailpage&v=hGQw3KJ7i6Q#t=1528) ##
+
+Data Visualization is very important, because a visual data representation is always good enough, that simple print or log statements. We know this, but very rarely we draw/plot graphs in programming language as it is very difficult to plot.
+
+In python, it is very easy, because of [PyLab](matplotlib.sourceforge.net), which gives most of the functionality from Matlab.
+
+Consider this example:-
+
+````
+import pylab
+
+pylab.plot([1,2,3,4], [1,2,3,4])
+pylab.plot([1,4,2,3], [5,6,7,8])
+pylab.show()
+````
+
+
 ## Reference ##
 ### Links ###
 
