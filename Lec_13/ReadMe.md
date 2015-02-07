@@ -124,16 +124,23 @@ Causal Non Determinism believed that not every event is based on the cause of a 
 
 Our inability to make measurement of the physical world makes it impossible to make prediction of the future. So basically this means, things are not unpredictable, it just looks unpredictable because we do not have enough information.
 
+## [Stochastic Process ](https://www.youtube.com/watch?list=PLB2BE3D6CA77BB8F7&feature=player_detailpage&v=hGQw3KJ7i6Q#t=895) ##
 
-causal Non-determinism 11:20
-predictive Non-determinism
+A process is **Stochastic**, if its next step depends on both, i.e. the previous state and some random elements.
 
-Stochastic Process 14:50
+The random elements in python are introduced by the help of `random.random()`, which generates a random value between `0.0` and `1.0`.
+
+Consider the example of rolling a dice, suppose we roll a dice, which one of the following sequence is more likely to be possible, if the dice is rolled 10 times.:-
+
+````
+1111111111
+5442462412
+````
+The answer is both the answer are equally likely, as each roll of dice is independent of the previous rolls.
+
+In a Stochastic process, two events are independent, if the outcome of one event has no influence on the outcome of the other.
 
 [PyLab](matplotlib.sourceforge.net)
-
-
-
 ## Reference ##
 ### Links ###
 
