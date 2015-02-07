@@ -140,6 +140,14 @@ The answer is both the answer are equally likely, as each roll of dice is indepe
 
 In a Stochastic process, two events are independent, if the outcome of one event has no influence on the outcome of the other.
 
+Consider one more example, which we do with a Coin. So on a coin flip, what are the maximum number of output we can get. It is `2`, heads or tails. So If we flip the coin for 10 times, the total different sequence of `1` and `0` it will create is `2^10`.
+
+So in the flipping of coin for 10 times, both 10 times `0` and `1` is equally likely to happen.
+
+What is the probability of getting all `1`, is `1/2^10`. 
+
+Probability = what fraction of the possible results have the property we are testing for.
+
 [PyLab](matplotlib.sourceforge.net)
 ## Reference ##
 ### Links ###
