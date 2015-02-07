@@ -2,7 +2,7 @@
 
 We are not in the Unit-2 and there are example which are dependent on a module of python called `PyLab`. Now there is no clear documentation to install it. So I am trying to provide that.
 
-## Windows Installation ##
+## Windows Installation ## 
 
 There are lot of documentation available for installing it, but none of it worked for me. So to Install this is the route I took.
 
