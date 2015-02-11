@@ -126,11 +126,154 @@ Inferential Statistics in brief it is based on one guiding principle, A random s
 
 The problem is, the above assumptions are sometimes wrong, which we will see later.
 
-[30:12](https://www.youtube.com/watch?v=ddtobc-AOK4&list=PLB2BE3D6CA77BB8F7#t=1812)
+Consider an example, *What if we flipped a coin 100 times, and we get 52 heads and 48 tails, what do this infer?*
 
-### Law of Large Numbers : 33:50 ###
+Do we infer that if we again flipped a coin 100 times we will get the same heads and tails ratio, probably not, even we will not be comfortable in saying that there will be more heads than tails based on the above sample.
+
+A proper way to infer something will be, What is the total number of tests done and how closely the answer is when we did things in random. This is something called a [Null hypothesis ](http://en.wikipedia.org/wiki/Null_hypothesis)
+
+Consider the below example:-
+
+````
+def flipCoin(numFlips):
+    heads = 0
+    for i in range(numFlips):
+        if random.random() < 0.5:
+            heads += 1
+    return heads/float(numFlips)
+````
+
+The above code is a simple coin flip code, which will flip a coin for `numFlips` times, and will tell us how may times we get heads, we already know that we should get a answer near `0.5`. So here is the output when run different number of times:-
+
+````
+Flip 100 times
+CoinFlip i =  0  flipCoin(100):  0.49
+CoinFlip i =  1  flipCoin(100):  0.44
+CoinFlip i =  2  flipCoin(100):  0.5
+CoinFlip i =  3  flipCoin(100):  0.46
+CoinFlip i =  4  flipCoin(100):  0.53
+CoinFlip i =  5  flipCoin(100):  0.45
+CoinFlip i =  6  flipCoin(100):  0.56
+CoinFlip i =  7  flipCoin(100):  0.51
+CoinFlip i =  8  flipCoin(100):  0.44
+CoinFlip i =  9  flipCoin(100):  0.56
+Flip 1000000 times
+CoinFlip i =  0  flipCoin(1000000):  0.499925
+CoinFlip i =  1  flipCoin(1000000):  0.499876
+CoinFlip i =  2  flipCoin(1000000):  0.500231
+CoinFlip i =  3  flipCoin(1000000):  0.499441
+CoinFlip i =  4  flipCoin(1000000):  0.499637
+CoinFlip i =  5  flipCoin(1000000):  0.49971
+CoinFlip i =  6  flipCoin(1000000):  0.49968
+CoinFlip i =  7  flipCoin(1000000):  0.50031
+CoinFlip i =  8  flipCoin(1000000):  0.499946
+````
+
+So as we can see, when the `numFlips` is more like `1000000`, we get answers close to `0.5`.
+
+The above is an example of **Law of large numbers,** or [Bernoulli's Law of Large Numbers](http://en.wikipedia.org/wiki/Law_of_large_numbers).
+
+### [Law of Large Numbers](https://www.youtube.com/watch?v=ddtobc-AOK4&list=PLB2BE3D6CA77BB8F7#t=2027) ###
+
+The law states, In repeated **independent** tests with the same actual probability `P` chance that fraction of times outcome occurs converges to `P` as no of test goes to infinity.
+
+This law does not states that if we start out with deviation in the expected behavior, those deviation will eventually be even out. That means, if in a coin flip we initially get a sequence of Heads, does not means we will have more tails towards the end, because as mentioned above it depends on tests to be **independents**. This is what we call [Gambler's fallacy ](http://en.wikipedia.org/wiki/Gambler%27s_fallacy)
+
+This laws also does not states that, with increase in number of trails, the absolute difference between the number of heads and tails will get smaller.
+
+Now consider an example for the same:-
+
+````
+import random 
+import pylab
+
+def flipPlot(minExp,maxExp):
+    ratios = []
+    diffs = []
+    xAxis = []
+    for exp in range(minExp,maxExp+1):
+        xAxis.append(2 ** exp)
+    print "xAxis: ", xAxis            
+    for numFlips in xAxis:
+        numHeads = 0
+        for n in range(numFlips):
+            if random.random() < 0.5:
+                numHeads += 1
+        numTails = numFlips - numHeads
+        ratios.append(numHeads/float(numTails))
+        diffs.append(abs(numHeads - numTails))
+    pylab.title('Difference Between Heads and Tails')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Abs(#Heads - #Tails')
+    pylab.plot(xAxis, diffs)
+    pylab.figure()
+    pylab.plot(xAxis, ratios)
+    pylab.title('Heads/Tails Ratios')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Heads/Tails')
 
 
+flipPlot(4,20)  
+pylab.show()
+
+````
+
+Here is the output of the same:-
+
+* ![Difference between heads and tails](images/diffbetweenHeadsandTails.png)
+* ![Head To Tails Ratio ](images/heads2tailsRatio.png)
+
+From the graph of Difference between heads and tails, it will look like we have trend in which the difference shoots up dramatically. But is this really a happening?
+
+The reason this is happening because, the default behavior of pylab is to connect the dots with lines. So this can be a problem because as a user you may think you have a trend but it really may be an outliers, because the number of points can be as low as 2 or 3.
+
+So if we modify the code to plot points:-
+
+````
+import random 
+import pylab
+
+def flipPlot(minExp,maxExp):
+    ratios = []
+    diffs = []
+    xAxis = []
+    for exp in range(minExp,maxExp+1):
+        xAxis.append(2 ** exp)
+    print "xAxis: ", xAxis
+    for numFlips in xAxis:
+        numHeads = 0
+        for n in range(numFlips):
+            if random.random() < 0.5:
+                numHeads += 1
+        numTails = numFlips - numHeads
+        ratios.append(numHeads/float(numTails))
+        diffs.append(abs(numHeads - numTails))
+    pylab.figure()
+    pylab.title('Difference Between Heads and Tails')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Abs(#Heads - #Tails')
+    pylab.plot(xAxis, diffs, 'bo') #do not connect, show dot
+    pylab.figure()
+    pylab.plot(xAxis, ratios, 'bo') #do not connect, show dot
+    pylab.title('Heads/Tails Ratios')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Heads/Tails')
+    # pylab.semilogx()
+
+flipPlot(4,20)  
+pylab.show()
+````
+
+The output will be:-
+* ![Difference between heads and tails](images/diffbetweenHeadsandTails-dot.png)
+* ![Head To Tails Ratio ](images/heads2tailsRatio-dot.png)
+
+So if we see the "Difference between heads and tails" figure, we will see the dots are petty sparse, which will make it difficult to show a trends.
+
+Since the scale of the x and y axis is petty vast just change it to log axis and see the difference.
+
+* ![Difference between heads and tails](images/diffbetweenHeadsandTails-log.png)
+* ![Head To Tails Ratio ](images/heads2tailsRatio-log.png)
 
 ## Reference ##
 ### Links ###
