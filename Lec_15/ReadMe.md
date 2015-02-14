@@ -53,7 +53,6 @@ We have now understood what a standard deviation is, now what is the use of it?
 Standard deviation will be used to look at the relationship between the number of samples we have looked at and how much confidence we should have in the answer.
 
 ### Co-efficient of variation : 17:40 ###
-what is 
 
 ![Co-efficient of variation](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
 
