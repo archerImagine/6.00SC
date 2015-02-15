@@ -54,7 +54,7 @@ Standard deviation will be used to look at the relationship between the number o
 
 ### Co-efficient of variation : 17:40 ###
 
-![Co-efficient of variation](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
+![Co-efficient of variation ](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
 
 ### Normal Distribution ###
 
