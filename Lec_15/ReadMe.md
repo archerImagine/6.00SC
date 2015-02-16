@@ -52,9 +52,104 @@ We have now understood what a standard deviation is, now what is the use of it?
 
 Standard deviation will be used to look at the relationship between the number of samples we have looked at and how much confidence we should have in the answer.
 
-### Co-efficient of variation : 17:40 ###
+Lets understand standard deviation with the help of this code:-
 
-![Co-efficient of variation ](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
+````
+import random, pylab
+import example01
+def flipPlot(minExp, maxExp,numTrials):
+    meanRatios = []
+    meanDiffs = []
+    ratiosSDs = []
+    diffsSDs = []
+    xAxis = []
+    for exp in range(minExp,maxExp + 1):
+        xAxis.append(2**exp)
+    for numFlips in xAxis:
+        ratios = []
+        diffs = []
+        for t in range(numTrials):
+            numHeads = 0
+            for n in range(numFlips):
+                if random.random() < 0.5:
+                    numHeads += 1
+            numTails = numFlips - numHeads
+            ratios.append(numHeads/float(numTails))
+            diffs.append(abs(numHeads - numTails))
+        meanRatios.append(sum(ratios)/numTrials)
+        meanDiffs.append(sum(diffs)/numTrials)
+        ratiosSDs.append(example01.stdDev(ratios))
+        diffsSDs.append(example01.stdDev(diffs))
+    pylab.plot(xAxis, meanRatios, 'bo')
+    pylab.title('Mean Heads/Tails Ratios ('
+                + str(numTrials) + ' Trials)')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Mean Heads/Tails')
+    pylab.semilogx()
+    pylab.figure()
+    pylab.plot(xAxis, ratiosSDs, 'bo')
+    pylab.title('SD Heads/Tails Ratios ('
+                + str(numTrials) + ' Trials)')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Standard Deviation')
+    pylab.semilogx()
+    pylab.semilogy()
+    pylab.figure()
+    pylab.title('Mean abs(#Heads - #Tails) ('
+                + str(numTrials) + ' Trials)')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Mean abs(#Heads - #Tails')
+    pylab.plot(xAxis, meanDiffs, 'bo')
+    pylab.semilogx()
+    pylab.semilogy()
+    pylab.figure()
+    pylab.plot(xAxis, diffsSDs, 'bo')
+    pylab.title('SD abs(#Heads - #Tails) ('
+                + str(numTrials) + ' Trials)')
+    pylab.xlabel('Number of Flips')
+    pylab.ylabel('Standard Deviation')
+    pylab.semilogx()
+    pylab.semilogy()
+
+flipPlot(4, 20, 20)
+pylab.show()    
+````
+
+Now let us analyze the plots:-
+
+* Mean of Head to Tails ratio.
+     ![meanHeadsTailsRatio](images/meanHeadsTailsRatio.png)
+
+    * In the above plot you can see that when the number of flips are small, the points varies significantly and once the number of flips increases it sort of stabilize around 1.
++ Standard Deviation of Heads 2 Tails Ratio
+     ![standardDevationOfHeads2Tails](images/standardDevationOfHeads2Tails.png)
+     * As we flip more coin, the variance of trails becomes smaller, because in some sense randomness is playing less important role. Which means the more random trails we do, we will get answers near to the actual representation of the truth, and that is the reason standard deviation will drop.
++ Absolute Difference between no of Head to Tails.
+     ![absMeanDiffernceNoofHead2Tails](images/absMeanDiffernceNoofHead2Tails.png)
+    * As we can see in the figure, the absolute difference between no of heads and tails keep going bigger as the no of flips increases.
+* Standard deviation between absolute difference of no of Heads to Tails.
+    ![standardAbsMeanDiffernceNoofHead2Tails](images/standardAbsMeanDiffernceNoofHead2Tails.png)       
+    * Now this figure at the first looks like an outliers, because as we flip more coins the standard deviation is increasing, which means the variance is increasing, so the result are not credible. We should think of standard deviation is relatively large or relatively small, relative to the means.
+    * So we can check if the standard deviation is relatively small or large w.r.t to the means, with the help of **Co-efficient of variation**.
+
+## [Co-efficient of variation ](https://www.youtube.com/watch?v=VqZBqoZgL7k&list=PLB2BE3D6CA77BB8F7#t=1053) ##
+
+Co-efficient of variation is simply ratio of standard deviation to the Means.
+
+![Co-efficient of variation](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
+
+* `< 1`, we think of it as low variance.
+
+
+There is some warning which we should consider while dealing with Co-efficient of variation.
+
+* When the mean value is close to zero, the coefficient of variation will approach infinity and is therefore sensitive to small changes in the mean. This is often the case if the values do not originate from a ratio scale.
+* Unlike the standard deviation, it cannot be used directly to construct confidence intervals for the mean.
+
+
+[Start tomorrow here.](https://www.youtube.com/watch?v=VqZBqoZgL7k&list=PLB2BE3D6CA77BB8F7#t=1296)
+
+
 
 ### Normal Distribution ###
 

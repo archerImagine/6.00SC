@@ -55,6 +55,5 @@ def flipPlot(minExp, maxExp,numTrials):
     pylab.semilogx()
     pylab.semilogy()
 
-
 flipPlot(4, 20, 20)
 pylab.show()    
