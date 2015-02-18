@@ -38,6 +38,7 @@ def flipPlot(minExp, maxExp,numTrials):
     pylab.ylabel('Standard Deviation')
     pylab.semilogx()
     pylab.semilogy()
+    
     pylab.figure()
     pylab.title('Mean abs(#Heads - #Tails) ('
                 + str(numTrials) + ' Trials)')
@@ -46,6 +47,7 @@ def flipPlot(minExp, maxExp,numTrials):
     pylab.plot(xAxis, meanDiffs, 'bo')
     pylab.semilogx()
     pylab.semilogy()
+    
     pylab.figure()
     pylab.plot(xAxis, diffsSDs, 'bo')
     pylab.title('SD abs(#Heads - #Tails) ('

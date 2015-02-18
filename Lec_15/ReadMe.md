@@ -151,7 +151,21 @@ There is some warning which we should consider while dealing with Co-efficient o
 
 
 
-### Normal Distribution ###
+### [Normal Distribution ](https://www.youtube.com/watch?list=PLB2BE3D6CA77BB8F7&v=VqZBqoZgL7k&feature=player_detailpage#t=1809) ###
+
+Some interesting property of Normal Distribution:-
+
+* It always peeks at the mean.
+* Falls of symmetrically.
+* Normal Distribution is often called **Bell Curve**, because of the way it looks.
+
+Normal Distribution is used to create probabilistic models for 2 reason.
+
+* It has Nice mathematical property.
+    - They can be nicely characterized by 2 parameters, **Mean** and **Standard Deviation**
+    - If we have a normal Distribution, we can use mean and standard deviation to create **confidence intervals.**
+* Many naturally occurring instances.
+
 
 ### Standard Error : 41:19 ###
 
