@@ -136,7 +136,7 @@ Now let us analyze the plots:-
 
 Co-efficient of variation is simply ratio of standard deviation to the Means.
 
-![Co-efficient of variation](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
+![Co-efficient of variation ](https://www.resna.org/sites/default/files/legacy/conference/proceedings/2010/Wheeled%20Mobility/Student%20Papers/ChaconA/Equation%205.png)
 
 * `< 1`, we think of it as low variance.
 
@@ -150,6 +150,108 @@ There is some warning which we should consider while dealing with Co-efficient o
 [Start tomorrow here.](https://www.youtube.com/watch?v=VqZBqoZgL7k&list=PLB2BE3D6CA77BB8F7#t=1296)
 
 
+Consider the below code:-
+
+````
+import pylab
+
+L = [1,2,3,3,3,4]
+pylab.figure()
+pylab.hist(L, bins = 6)
+pylab.show()  
+````
+
+In the code shown in the video, if we use the code as it is, we will not get the plot, we have to add the two calls to get the plot.
+
+````
+pylab.figure()
+pylab.show()  
+````
+
+The sample output will look like this.
+
+![Simple Histogram ](images/simpleHistogram.png)
+
+Now let us see a more useful code for plotting histogram and its use:-
+
+````
+import pylab,random
+
+def stdDev(X):
+    mean = sum(X)/float(len(X))
+    total = 0.0
+    for x in X:
+        total += (x - mean)**2
+    return (total/len(X)) ** 0.5
+
+def flip(numFlips):
+    heads = 0.0
+    for i in range(numFlips):
+        if random.random() < 0.5:
+            heads += 1.0
+    return heads/numFlips
+
+def flipSim(numFlipsPerTrails,numTrails):
+    fracHeads = []    
+    for i in range(numTrails):
+        fracHeads.append(flip(numFlipsPerTrails))
+    return fracHeads
+
+def labelPlot(nf,nt,mean,sd):
+    pylab.title(str(nt) + ' trials of '+ str(nf) + ' flips each')    
+    pylab.xlabel('Fraction of Heads')
+    pylab.ylabel('Number of Trials')
+    xmin, xmax = pylab.xlim()
+    ymin, ymax = pylab.ylim()
+    pylab.text(xmin + (xmax-xmin)*0.02, (ymax-ymin)/2,
+               'Mean = ' + str(round(mean, 6))
+               + '\nSD = ' + str(round(sd, 6)))
+def makePlots(nf1, nf2, nt):
+    """nt = number of trials per experiment
+       nf1 = number of flips 1st experiment
+       nf2 = number of flips 2nd experiment"""
+    fracHeads1 = flipSim(nf1, nt)
+    mean1 = sum(fracHeads1)/float(len(fracHeads1))
+    sd1 = stdDev(fracHeads1)
+    pylab.hist(fracHeads1, bins = 20)
+    xmin,xmax = pylab.xlim()
+    ymin,ymax = pylab.ylim()
+    labelPlot(nf1, nt, mean1, sd1)
+    pylab.figure()
+    fracHeads2 = flipSim(nf2, nt)
+    mean2 = sum(fracHeads2)/float(len(fracHeads2))
+    sd2 = stdDev(fracHeads2)
+    pylab.hist(fracHeads2, bins = 20)
+    pylab.hist(fracHeads2, bins = 20)
+    pylab.xlim(xmin, xmax)
+    ymin, ymax = pylab.ylim()
+    labelPlot(nf2, nt, mean2, sd2)    
+
+makePlots(100, 1000, 100000)
+pylab.show()    
+````
+
+Some Apis which we should discuss from the above code are:-
+
+````
+pylab.xlim()
+pylab.ylim()
+
+pylab.xlim(xmin, xmax)
+
+````
+
+The api, `xlim()` and `ylim()`, when called with no parameters gives the normal range of `x` and `y` axis. And when called with parameters sets this values to the limit of `x` and `y` axis, inplace of using the default limits.
+
+The histogram will look like this.
+
+* 100000 trials with 100 flip each.
+    ![Histogram with 100 flips.](images/histogramWith100Flips.png)
+In the above histogram, what is the few important things to notice is that the distribution is not evenly spread.
+* 100000 trails with 1000 flip each.
+     ![Histogram with 1000 flips](images/histogramWith1000Flips.png)
+In the Above histogram, the spread is much more even. This distribution is what we call a **Normal Distribution.**
+
 
 ### [Normal Distribution ](https://www.youtube.com/watch?list=PLB2BE3D6CA77BB8F7&v=VqZBqoZgL7k&feature=player_detailpage#t=1809) ###
 
@@ -159,6 +261,8 @@ Some interesting property of Normal Distribution:-
 * Falls of symmetrically.
 * Normal Distribution is often called **Bell Curve**, because of the way it looks.
 
+The above figure is not exactly a Normal distribution, because it is not symmetric on both side of mean.
+
 Normal Distribution is used to create probabilistic models for 2 reason.
 
 * It has Nice mathematical property.
@@ -166,10 +270,74 @@ Normal Distribution is used to create probabilistic models for 2 reason.
     - If we have a normal Distribution, we can use mean and standard deviation to create **confidence intervals.**
 * Many naturally occurring instances.
 
+### [Confidence Intervals.](https://www.youtube.com/watch?v=VqZBqoZgL7k&list=PLB2BE3D6CA77BB8F7#t=2128) ###
 
-### Standard Error : 41:19 ###
+Probability is all about estimating a unknown, like What is the probability of getting a Head or tails. And till now the estimation was based on the **mean.**
+
+Confidence intervals gives a way of estimating the unknown variable by giving a range that is likely to contain the unknown value, and a confidence that the unknown value lies within the range.
+
+For an example, consider the POLL estimation given in newspaper, they inform that the chances of a candidate winning is 48% with +-4%. So this says that, the chances of the candidate winning is from 44% to 52%. If the +-4% is not mentioned then by default it is +- 5%.
+
+When the press makes above statement their assumption is that the Polls are random trails with normal distribution.
+
+**Empirical Rule:- ** They give a handy rule to estimate the confidence intervals provided we give them Mean and Standard Deviation.
+
+* 68% of the data is within 1 Standard deviation of the mean.
+* 95% within 2 Standard Deviation.
+* 99.99% will lie within 3 Standard Deviation.
+
+So how did the pollster find the standard Deviation, did then perform a massive survey of people. They actually do not do this survey in place they do a trick to estimate the standard deviation, which is **Standard Error.**
+
+### [Standard Error](https://www.youtube.com/watch?v=VqZBqoZgL7k&list=PLB2BE3D6CA77BB8F7#t=2451) ###
+
 
 ![Standard Error ](http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Confidence_Intervals/CI_prop_SE.png)
+
+P : Sampled Population.
+n : Sample Size.
+
+This is the estimate of the Standard Deviation with these assumption.
+
+* The errors are evenly distributed.
+* Sample Population is small relative to actual population.
+
+Consider the below example, A pollster is to sample 1000 voters(n), and 46% of them said they will vote for Abraham Lincoln. The standard error will be 1.58% we will interpret this to mean, that in 95% of time, the % votes that Lincoln will get lies between 2 Standard Deviation of 46%.
+
+Consider the below code:-
+
+````
+import pylab,random
+
+def stdDev(X):
+    mean = sum(X)/float(len(X))
+    total = 0.0
+    for x in X:
+        total += (x - mean)**2
+    return (total/len(X)) ** 0.5
+def poll(n,p):
+    votes = 0.0
+    for i in range(n):
+        if random.random() < p/100.0:
+            votes += 1
+    return votes
+def testErr(n = 1000, p = 46.0, numTrials = 1000):
+    results = []
+    for t in range(numTrials):
+        results.append(poll(n, p))
+    print 'std = ' + str((stdDev(results)/n)*100) + '%'
+    results = pylab.array(results)/n
+    pylab.hist(results)
+    pylab.xlabel('Fraction of Votes')
+    pylab.ylabel('Number of Polls')
+testErr()
+pylab.show()    
+````
+
+The output will look like this:-
+
+![Poll](images/poll.png)
+
+The standard deviation is `1.58827785982%` and we estimated it to be `1.58% ` by using standard error, which is very close, so Standard Error is a way of predicting the standard deviation.
 
 ## Reference ##
 ### Links ###

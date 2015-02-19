@@ -50,7 +50,5 @@ def makePlots(nf1, nf2, nt):
     ymin, ymax = pylab.ylim()
     labelPlot(nf2, nt, mean2, sd2)    
 
-L = [1,2,3,3,3,4]
-pylab.hist(L, bins = 6)
 makePlots(100, 1000, 100000)
 pylab.show()    
