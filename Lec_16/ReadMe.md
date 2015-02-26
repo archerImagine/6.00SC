@@ -74,6 +74,8 @@ So if we see the graph, it looks like a exponential decay, which drop sharply an
 
 So if we plot a exponential curve on a log axis we will get a straight line.
 
+dummy
+
 ## Monty Hall 22:00 ##
 
 ## Pi Estimation 34:00 ##
