@@ -362,6 +362,7 @@ print doubleIntegrate(0, 1.25, 0, 1.25, f, 100000)
 
 ### Check Yourself ###
 ### What is a Gaussian distribution? ###
+When the distribution is evenly distributed along the mean.
 ### What is a uniform distribution? ###
 ### What is important about an exponential distribution? ###
 
