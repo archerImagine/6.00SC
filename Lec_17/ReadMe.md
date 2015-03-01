@@ -1,0 +1,1 @@
+# MIT 6.00SC | Lecture 17 | Curve Fitting #
