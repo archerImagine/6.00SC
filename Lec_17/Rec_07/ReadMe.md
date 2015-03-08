@@ -50,7 +50,7 @@ The function for normal distribution is denoted by:-
 > The parameter ![](http://upload.wikimedia.org/math/b/7/2/b72bb92668acc30b4474caff40274044.png) in this definition is the mean or expectation of the distribution (and also its median and mode). The parameter ![](http://upload.wikimedia.org/math/9/d/4/9d43cb8bbcb702e9d5943de477f099e2.png) is its standard deviation; its variance is therefore ![](http://upload.wikimedia.org/math/3/c/6/3c6a93fc922fbfa19aea78961760cefb.png). A random variable with a Gaussian distribution is said to be normally distributed and is called a normal deviate.
 
 
-### Exponential Distribution ###
+
 
 ## Monte Carlo ##
 ## Regressions ##
