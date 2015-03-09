@@ -53,6 +53,3 @@ The function for normal distribution is denoted by:-
 
 
 ## Monte Carlo ##
-## Regressions ##
-
-
