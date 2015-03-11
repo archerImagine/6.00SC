@@ -43,7 +43,6 @@ A Normal Distribution have these property:-
 * Falls of symmetrically.
 * Normal Distribution can be nicely characterized by 2 parameters, **Mean** and **Standard Deviation**.
 
-The function for normal distribution is denoted by:-
 
 ![](http://upload.wikimedia.org/math/7/3/a/73ad15f79b11af99bd2477ff3ffc5a35.png)
 
