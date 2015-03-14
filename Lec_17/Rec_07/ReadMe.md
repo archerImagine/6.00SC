@@ -236,6 +236,3 @@ def PlotPiScatter(r,n):
 
 We can use the same method of needle drop to find the area of a function using integration.
 
-## [Regressions](https://www.youtube.com/watch?v=FBKxrPEeCSU&list=PLB2BE3D6CA77BB8F7&t=2100) ##
-
-
