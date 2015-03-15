@@ -233,6 +233,3 @@ def PlotPiScatter(r,n):
 ![](images/estimatePIwith100000Points.png)
 
 ### Numeric Integration ###
-
-We can use the same method of needle drop to find the area of a function using integration.
-
