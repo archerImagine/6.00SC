@@ -231,5 +231,3 @@ def PlotPiScatter(r,n):
 ![](images/estimatePIwith10000Points.png)
 * No of needles with just 1000000 points
 ![](images/estimatePIwith100000Points.png)
-
-### Numeric Integration ###
