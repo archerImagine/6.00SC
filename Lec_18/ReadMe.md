@@ -96,6 +96,9 @@ To find the answer to the above question we have to understand the interplay bet
 ## Optimization : 17:13 ##
 ### Problem Reduction : 20:59 ###
 
+## KnapSack Problem: 22:35 ##
+### Greedy Algorithms: 25:00 ###
+### 0/1 Knapsack Problem : 28:00 ###
 
 
 
