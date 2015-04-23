@@ -225,7 +225,8 @@ def test0(numClusters = 2, scaling = 'identity', printSteps = False,
         print '  C' + str(index) + ':', c
         index += 1
 
-test0()                
+# test0()                
+test0(scaling="1/max")                
                         
             
 

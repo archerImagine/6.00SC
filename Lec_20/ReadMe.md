@@ -295,11 +295,101 @@ def test0(numClusters = 2, scaling = 'identity', printSteps = False,
 test0()                
 ````
 
-[Start Here](https://youtu.be/Iu4xTLKcbPo?list=PLB2BE3D6CA77BB8F7&t=1137)
+Lets dissect the above Code:-
 
-## K-Means Clustering : 41:25 ##
+Since we can see that we have multiple classes in this code example, some of the classes are:-
+
+1. `Point`
+2. `Cluster`
+3. `ClusterSet`
+4. `Mammal`
+
+So lets see the usefulness of these class. 
+
+* At the bottom of the class hierarchy we have the `Point` class, which we can also call as the base class. The `Point` class has these properties
+    - `name`: Name attribute, to assign a name to the object.
+    - `originalAttrs` : We save the original attributes, if we do not want it to be normalized.
+    - `normalizedAttrs`: We save the normalized attributes, if we choose to normalize it.
+    - `unNormalized` : Irrespective of weather we have normalized or not, we save the original attributes here.
+    - `distance()` : This returns the euclidean distance between two points.
+* The second class in the flat hierarchy is `Cluster `, Which at an some abstract level will be set of points in the clusters.
+    - We can calculate distance between two clusters with different linkage type, `singleLinkageDist()`, `maxLinkageDist()`, `averageLinkageDist()`
+    - The cluster will also have a way to calculate the `centroid `, which is done by `computeCentroid()`, which will come into picture once we learn about **K-Mean Clusters.**
+* The third class will be `ClusterSet`, which is just a set of clusters.
+    - `mergeClusters()` : This is most interesting cluster operation, because in Hierarchical Clustering the key step is merging.
+    - `findClosest()`: This is a helper method, which finds the closest clusters.
+* Then there is a subclass of `Point ` called `Mammal `. Where each mammal will be represented by the data file from the dentist. 
+
+Finally we get these two clusters:-
+
+````
+C0: Badger, Bear, Brown Bat, Cougar, Deer, Dog, Elephant Seal, Elk, Fur Seal, Grey Seal, Jaguar, Marten, Mole, Moose, Raccoon, Reindeer, River Otter, Sea Lion, Sea Otter, Silver Hair Bat, Weasel, Wolf, Wolverine
+
+C1: Beaver, Gray Squirrel, Groundhog, House Bat, House Mouse, Human, Pigmy Bat, Pika, Porcupine, Rabbit, Rat, Red Bat
+````
+
+One interesting thing is, `Dear` and `Dog` are in the same cluster, but since we were making clusters based on the eating habit, this does not look right.
+
+**So what went wrong?**, If we see the `test0()` method, we are using `scaling ` as `identity `, but the issue is if we see the data file, we will find that all the type of teeth does not have the same dynamic range. Since we are not doing any normalization's.
+
+So if we look closely to `Mammal.scaleFeatures()`, we have a attribute which `scaleDict` decides which type of scaling we will do, we had used `identity ` till not, we will change to `1/max`
+
+Modifying the test to this:- 
+
+````
+test0(scaling="1/max")   
+````
+
+Gives us an expected result as shown below:-
+
+````
+C0: Badger, Bear, Brown Bat, Cougar, Dog, Elephant Seal, Fur Seal, Grey Seal, House Bat, Human, Jaguar, Marten, Mole, Pigmy Bat, Raccoon, Red Bat, River Otter, Sea Lion, Sea Otter, Silver Hair Bat, Weasel, Wolf, Wolverine
+
+C1: Beaver, Deer, Elk, Gray Squirrel, Groundhog, House Mouse, Moose, Pika, Porcupine, Rabbit, Rat, Reindeer
+````
+
+Which definitely classifies as carnivores and herbivores.
+
+The above experiment help us understand that without having any knowledge about what the animals are eating we can derive their eating habits. So we cannot label them as carnivores or herbivores, but we can specify that there are 2 groups of animals, and the animal in the same group are similar than the animals in other group.
 
 
+## Clustering Example 02 ##
+
+We will change the above code for checking the counties example. Now we can see the `counties.txt`, if we apply Hierarchical clustering we can find that there are 3100 counties in USA and we have to do `3100 ^ 2` comparison we have to do in the first pass.
+
+So we know it will take really long time. So we will run it on a smaller set of data which is `newEngland.txt`. On the first run we will see the output as
+
+````
+C0: MAMiddlesex
+
+C1: CTFairfield, CTHartford, CTLitchfield, CTMiddlesex, CTNewHaven, CTNewLondon, CTTolland, CTWindham, MABarnstable, MABerkshire, MABristol, MADukes, MAEssex, MAFranklin, MAHampden, MAHampshire, MANantucket, MANorfolk, MAPlymouth, MASuffolk, MAWorcester, MEAndroscoggin, MEAroostook, MECumberland, MEFranklin, MEHancock, MEKennebec, MEKnox, MELincoln, MEOxford, MEPenobscot, MEPiscataquis, MESagadahoc, MESomerset, MEWaldo, MEWashington, MEYork, RIBristol, RIKent, RINewport, RIProvidence, RIWashington, VTAddison, VTBennington, VTCaledonia, VTChittenden, VTEssex, VTFranklin, VTGrandIsle, VTLamoille, VTOrange, VTOrleans, VTRutland, VTWashington, VTWindham, VTWindsor
+````
+
+So `MAMiddlesex` alone is one cluster, the reason being, it has the most no of people living in it, so just this parameter eats up any other type of comparison without scaling.
+
+So we will try with scaling on.
+
+````
+C0: CTFairfield, CTHartford, CTNewHaven, MABristol, MAEssex, MAHampden, MAMiddlesex, MANorfolk, MAPlymouth, MASuffolk, MAWorcester, RIProvidence
+
+C1: CTLitchfield, CTMiddlesex, CTNewLondon, CTTolland, CTWindham, MABarnstable, MABerkshire, MADukes, MAFranklin, MAHampshire, MANantucket, MEAndroscoggin, MEAroostook, MECumberland, MEFranklin, MEHancock, MEKennebec, MEKnox, MELincoln, MEOxford, MEPenobscot, MEPiscataquis, MESagadahoc, MESomerset, MEWaldo, MEWashington, MEYork, RIBristol, RIKent, RINewport, RIWashington, VTAddison, VTBennington, VTCaledonia, VTChittenden, VTEssex, VTFranklin, VTGrandIsle, VTLamoille, VTOrange, VTOrleans, VTRutland, VTWashington, VTWindham, VTWindsor
+```` 
+
+We get a different answer, but is its a correct answer, depends on what we want to learn.
+
+## [K-Means Clustering ](https://youtu.be/Iu4xTLKcbPo?list=PLB2BE3D6CA77BB8F7&t=2482)##
+
+We wanted to do Hierarchical Clustering on the `counties.txt`, but since the no of computation was large we sort of dropped it, what if we want to do clustering on the above counties. We have a Clustering with much more efficiency i.e. **K-mean Clustering** which is relatively liner.
+
+### Steps of K-Mean Clustering  ###
+
+* Choose **K**, Total no of clusters.
+* Choose **K** points as the initial centroids as random.
+    - Centroids is the average points of the cluster, it need not be any point in the cluster, we can use Euclidean distance.
+* Assign each point to the nearest centroid.
+* For each of K-clusters choose a new centroid.
+* Assign each point to the nearest centroid.
+* Repeat 4,5 until the change is small.
 
 
 
