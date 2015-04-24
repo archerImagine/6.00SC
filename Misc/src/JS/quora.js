@@ -47,3 +47,36 @@ javascript:(function(){
     }
     console.log(myString)    
 })();
+
+
+followers = document.getElementsByClassName("ObjectCard-header");
+myString = "\n";
+for (i = 0; i < followers.length; i++){
+    followersLink = followers[i].getElementsByTagName('a')
+    myString += "* ["+followersLink[1].innerText+"]" +"(" +followersLink[0].href +") " +"  \n";        
+}
+
+javascript:(function(){
+    followers = document.getElementsByClassName("ObjectCard-header");
+    myString = "\n";
+    for (i = 0; i < followers.length; i++){
+        followersLink = followers[i].getElementsByTagName('a')
+        myString += "* ["+followersLink[1].innerText+"]" +"(" +followersLink[0].href +"answers/Machine-Learning) " +"  \n";        
+    }
+    console.log(myString)    
+})();
+javascript:(function(){
+for(followers=document.getElementsByClassName("ObjectCard-header"),myString="\n",i=0;i<followers.length;i++)followersLink=followers[i].getElementsByTagName("a"),myString+= i +" ["+followersLink[1].innerText+"]("+followersLink[0].href+"answers/Machine-Learning)   \n";console.log(myString);
+})();
+
+
+
+relatedQuestion = document.getElementsByClassName("related_questions");
+unorderedList=relatedQuestion[0].getElementsByTagName('ul');
+liNodes = unorderedList[0].childNodes;
+myString = "\n";
+for (i = 0; i < liNodes.length; i++){
+    answerLink = liNodes[i].getElementsByTagName('a');
+    myString += "* ["+answerLink[0].innerText+"]" +"(" +answerLink[0].href +"answers/Machine-Learning) " +"  \n";
+}
+
