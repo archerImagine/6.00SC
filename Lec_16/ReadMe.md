@@ -46,7 +46,7 @@ Consider a problem where at time `t=0` there are `n` molecule so how many molecu
 
 See the below code to look into this:-
 
-```
+```python
 import pylab
 
 def clear(n,clearProb,steps):
@@ -76,7 +76,7 @@ So if we plot a exponential curve on a log axis we will get a straight line.
 
 In the above code, we are using simulation when we are aware of the mathematical equation. We can also use Monte Carlo Simulation to mimic the physical process on which the code is based on.
 
-````
+````python
 def clearSim(n,clearProb,steps):
     numRemaning = [n]
     for t in range(steps):
@@ -120,7 +120,7 @@ It will be very difficult to create a analytic model, because we are not aware o
 
 The code to do this is here:-
 
-````
+````python
 def clearSimWhatif(n,clearProb,steps):
     numRemaning = [n]
     for t in range(steps):
@@ -174,7 +174,7 @@ Once that door is opened, if the contestant stay with his original choice the pr
 
 So lets run a simulation to understand complex situation like the Monty Hall problem.
 
-````
+````python
 import pylab,random
 
 def montyChose(guessDoor,prizeDoor):
@@ -254,7 +254,7 @@ Pi = area of the circle = (area of square * no of needle in circle)/No of needle
 
 So we will simulate the above equation in Code:-
 
-````
+````python
 import random
 
 def stdDev(X):
@@ -299,7 +299,7 @@ Integration means the area under the curve denoted by the equation. So we can us
 
 Single Integral Code:-
 
-````
+````python
 import random
 
 def integrate(a, b, f, numPins):
@@ -319,7 +319,7 @@ Monte Carlo Simulation is not a great way to solve single integral, but it is of
 
 Double Integral Code:-
 
-````
+````python
 import random
 def doubleIntegrate(a, b, c, d, f, numPins):
     pinSum = 0.0
