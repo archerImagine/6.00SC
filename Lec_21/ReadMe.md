@@ -96,7 +96,7 @@ We have learned about two types of learning.
 
 ## [Graph Theoretic ](https://youtu.be/UiZlaJX3IRk?list=PLB2BE3D6CA77BB8F7&t=1843)  ##
 
-The most popular way to build a model is Graph Theoretic. Till now be it curve fitting or machine learning, we are targeting creation of model which we want to create and then learn from them.
+The most popular way to build a model is Graph Theoretic. Till now, be it curve fitting or machine learning, we are targeting creation of model which we want to create and then learn from them.
 
 There is a rich set of resources like Graph and Graph Theory to understand these models.
 
@@ -136,6 +136,8 @@ The most important question which hover over Graphs, is which data structure to 
 * Adjacency List
     - For every node, we have have list all the edges starting from that node.
 The use of one of these two, depends on the application.
+
+The code to Implement graph is shown in Lecture 22.
 
 ## Reference ##
 ### Links ###
