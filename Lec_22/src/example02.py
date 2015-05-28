@@ -1,5 +1,4 @@
-
-
+import random
 class Node(object):
     """The base class for node"""
     def __init__(self, name):
@@ -58,7 +57,32 @@ class Graph(Digraph):
         rev = Edge(edge.getDestination(), edge.getSource())
         Digraph.addEdge(self,rev)
 
-def test1(kind):
+def shortestPath(graph,start,end,toPrint=False,visited = []):
+    # global numCalls
+    # numCalls += 1
+    if toPrint: #for debugging
+        print "", start, end
+    if not (graph.hasNode(start) and graph.hasNode(end)):
+        raise ValueError('Start or end not in graph.')
+    path = [str(start)]
+    if start == end:
+        return path
+    shortest = None
+    for node in graph.childrenOf(start):
+        if (str(node) not in visited): #avoid cycles
+            visited = visited + [str(node)] #new list
+            newPath = shortestPath(graph, node, end, toPrint, visited)
+            if newPath == None:
+                continue
+            if (shortest == None or len(newPath) < len(shortest)):
+                shortest = newPath
+    if shortest != None:
+        path = path + shortest
+    else:
+        path = None
+    return path
+
+def test2(kind, toPrint = False):
     nodes = []
     for name in range(10):
         nodes.append(Node(str(name)))
@@ -74,8 +98,27 @@ def test1(kind):
     g.addEdge(Edge(nodes[1],nodes[1]))
     g.addEdge(Edge(nodes[1],nodes[0]))
     g.addEdge(Edge(nodes[4],nodes[0]))
-    print 'The graph:', type(g)
-    print g            
+    print 'The graph:'
+    print g
+    shortest = shortestPath(g, nodes[0], nodes[4], toPrint)
+    print 'The shortest path:'
+    print shortest
 
-test1(Digraph)
-test1(Graph)    
+test2(Graph, toPrint=True)
+# test2(Digraph)
+
+def bigTest1(kind, numNodes = 25, numEdges = 200):
+    nodes = []
+    for name in range(numNodes):
+        nodes.append(Node(str(name)))
+    g = kind()
+    for n in nodes:
+        g.addNode(n)
+    for e in range(numEdges):
+        src = nodes[random.choice(range(0, len(nodes)))]
+        dest = nodes[random.choice(range(0, len(nodes)))]
+        g.addEdge(Edge(src, dest))
+    print g
+    print shortestPath(g, nodes[0], nodes[4])
+
+# bigTest1(Digraph)
